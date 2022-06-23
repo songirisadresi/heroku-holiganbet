@@ -13,12 +13,13 @@ domain=""
     
 app= Flask(__name__)
 
+
 CORS(app)
 
 def send_static(path):
     return send_from_directory('other', path)
     
-    
+'''    
 def search_string_in_file(file_name, string_to_search):
     """Search for the given string in file and return lines containing that string,
     along with line numbers"""
@@ -35,13 +36,15 @@ def search_string_in_file(file_name, string_to_search):
                 list_of_results.append((line_number, line.rstrip()))
     # Return list of tuples containing line numbers and lines where string is found
     return list_of_results
-    
+'''    
     
 
 @app.route('/', defaults={'u_path': ''})
 @app.route('/<path:u_path>')
 def catch_all(u_path):
    fname = u_path
+   if not fname:
+    return send_file("index.html", mimetype='text/html; charset=utf-8')
    if exists("app/"+fname):
     if ".png" in fname:
         return send_file(fname, mimetype='image/png')
@@ -54,7 +57,26 @@ def catch_all(u_path):
     elif ".svg" in fname:
         return send_file(fname, mimetype='image/svg+xml')
    else:
-        return redirect("index.html", code=302)
+        return redirect("app/index.html", code=302)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         '''if ".html" in fname:
             firma = fname;
