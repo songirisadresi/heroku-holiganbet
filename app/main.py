@@ -53,7 +53,7 @@ def catch_all(u_path):
     elif ".css" in fname:
         return send_file(fname, mimetype='text/css; charset=utf-8') 
     elif ".xml" in fname:
-        return send_file(fname, mimetype='application/xml')        
+        return send_file("sitemap.xml", mimetype='application/xml')        
     elif ".js" in fname:
         return send_file(fname, mimetype='text/js; charset=utf-8')   
     elif ".svg" in fname:
